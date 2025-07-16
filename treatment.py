@@ -1,14 +1,21 @@
-def validating_menu(menu, typer, name, price):
-    if name in menu:
-        if not typer.isdigit() and not name.isdigit() in menu:
-            return print('Item ja adicionado ou não foi enviado nenhum item')
-                
-    if price in menu:
-        if isinstance(price, int):
-            return print('Não foi enviado um valor correto ao produto')
+import os
+from acess import adm_acess
 
-    else:
-        menu[typer] = {
-        'Nome': name,
-        'Preco': price,
-    }
+def clear():
+    os.system('cls')
+
+def check_password():
+    senha_correta = 'adm@21'
+
+    while True:
+        senha = input('Digite a senha de administrador: ')
+        if senha == senha_correta:
+            clear()
+            print('Acesso concedido.')
+            adm_acess()
+
+        else:
+            clear()
+            print('Senha incorreta. Tente novamente.')
+        continue
+
