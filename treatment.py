@@ -1,5 +1,22 @@
 import os
-from acess import adm_acess
+
+def validating_menu(menu, typer, name, price, amount):
+    if typer and name in menu:
+        ...
+        
+    if not typer and not name in menu:
+        return print('Nao foi enviado nenhum item')
+                
+    if price.isdigit() in menu:
+        if not isinstance(price, int):
+            return print('Nao foi enviado um valor correto ao produto')
+
+    else:
+        menu[typer] = {
+        'Nome': name,
+        'Preco': price,
+        'Quantidade' : amount,
+        }
 
 def clear():
     os.system('cls')
@@ -12,10 +29,8 @@ def check_password():
         if senha == senha_correta:
             clear()
             print('Acesso concedido.')
-            adm_acess()
-
+            return
         else:
             clear()
             print('Senha incorreta. Tente novamente.')
         continue
-

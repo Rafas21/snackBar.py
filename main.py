@@ -1,5 +1,5 @@
 from treatment import check_password, clear
-# from acess import client_acess
+from acess import adm_acess, client_acess
 
 print(' -- Bem vindo a Lanchonete PY -- ')
 print()
@@ -11,6 +11,7 @@ while True:
     if adm_client == 'a':
         clear()
         check_password()
+        adm_acess()
 
     if adm_client == 'c':
         clear()
