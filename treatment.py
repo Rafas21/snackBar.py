@@ -1,22 +1,19 @@
 import os
 
-def validating_menu(menu, typer, name, price, amount):
-    if typer and name in menu:
-        ...
-        
-    if not typer and not name in menu:
-        return print('Nao foi enviado nenhum item')
-                
-    if price.isdigit() in menu:
-        if not isinstance(price, int):
-            return print('Nao foi enviado um valor correto ao produto')
+def validating_menu(menu, typer, name, price):
+    if typer not in menu:
+        menu[typer] = []
 
-    else:
-        menu[typer] = {
-        'Nome': name,
-        'Preco': price,
-        'Quantidade' : amount,
-        }
+    for item in menu[typer]:
+        if item['nome'].lower() == name.lower():
+            item["quantidade"] += 1
+            return
+
+    menu[typer].append({
+        'nome': name,
+        'preco': price,
+        'quantidade': 1
+    })
 
 def clear():
     os.system('cls')
@@ -34,3 +31,17 @@ def check_password():
             clear()
             print('Senha incorreta. Tente novamente.')
         continue
+
+def store_item(qtd, menu):
+    for _ in range(qtd):
+        clear()
+        typer = input('Tipo: ')
+        name = input('Nome: ')
+        try:
+            price = round(float(input("Preço: ")), 2)
+        except ValueError:
+            print("Preço inválido")
+            continue
+
+        validating_menu(menu, typer, name, price)
+    clear()

@@ -1,27 +1,32 @@
-from menu import store_item
+from menu import display_menu, menu
+from treatment import clear, store_item
 
 def adm_acess():
     while True:
-        print('Funções')
-        print()
-        choose = input('O que deseja fazer ?')
-
+        choose = input('Funções \n\n1 - Cadastrar produto \n2 - Verificar estoque \n3 - Voltar ao menu \n\nO que deseja fazer ? ')
         if choose == '1':
+
                 try:
+                    clear()
                     qtd = int(input('Quantos itens deseja cadastrar? '))
-                    return store_item(qtd)
+                    store_item(qtd, menu)
+
                 except ValueError:
+                    clear()
                     print('Digite um número válido.')
+                    continue
 
         if choose == '2':
-            return
+            display_menu()
 
-        if choose == '0':
-            print('Saindo do menu administrador...')
+        if choose == '3':
+            clear()
+            print('Indo para o menu...')
             break
 
         else:
-            print('Escolha inexistente')
+            clear()
+            return 'Escolha inexistente'
 
 def client_acess():
     ...
