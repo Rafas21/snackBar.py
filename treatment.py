@@ -1,5 +1,6 @@
 import os
 
+# Adição de intens na lista
 def validating_menu(menu, typer, name, price):
     if typer not in menu:
         menu[typer] = []
@@ -15,9 +16,11 @@ def validating_menu(menu, typer, name, price):
         'quantidade': 1
     })
 
+# Função clear
 def clear():
     os.system('cls')
 
+# Tratamento de senha
 def check_password():
     senha_correta = 'adm@21'
 
@@ -32,6 +35,7 @@ def check_password():
             print('Senha incorreta. Tente novamente.')
         continue
 
+# Validação da lista
 def store_item(qtd, menu):
     for _ in range(qtd):
         clear()
